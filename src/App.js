@@ -1,23 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import Header from "components/Header";
+import Notfound from "components/NotFound";
+import AlbumFeature from "features/Album";
+import ProductFeature from "features/Products";
+import TodoFeature from "features/Todo";
+import { useEffect } from "react";
+import { Outlet, Route, Routes, useLocation, useNavigate } from "react-router";
+
 
 function App() {
+  const location = useLocation()
+  const navigate = useNavigate()
+
+  // useEffect(() => {
+  //   const fetchProducts = async () => {
+  //     const productsList = await productsApi.getAll()
+  //     console.log(productsList)
+  //   }
+  //   fetchProducts()
+  // }, []);
+
+  useEffect(() => {
+    if (location.pathname === '/') {
+      navigate('/todos')
+    }
+  }, [navigate, location.pathname])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <Outlet />
+      <Routes>
+        <Route path="todos/*" element={<TodoFeature />} />
+        <Route path="albums/*" element={<AlbumFeature />} />
+        <Route path="products/*" element={<ProductFeature />} />
+
+        <Route path="*" element={<Notfound />} />
+      </Routes>
     </div>
   );
 }
