@@ -1,6 +1,6 @@
+import { Box } from '@material-ui/core';
 import { Skeleton } from '@material-ui/lab';
 import { Grid } from '@mui/material';
-import { Box } from '@mui/system';
 import PropTypes from 'prop-types';
 import React from 'react';
 

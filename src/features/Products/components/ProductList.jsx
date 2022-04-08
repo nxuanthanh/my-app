@@ -1,5 +1,4 @@
-import { Grid } from '@mui/material';
-import { Box } from '@mui/system';
+import { Box, Grid } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Product from './Product';

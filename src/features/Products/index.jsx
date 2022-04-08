@@ -1,5 +1,5 @@
-import { Box } from '@mui/system';
 import React from 'react';
+import { Box } from '@material-ui/core';
 import { Route, Routes } from 'react-router';
 import ListProductPage from './page/ListProductPage';
 import ProductsDetailPage from './page/ProductsDetailPage';

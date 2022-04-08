@@ -1,5 +1,4 @@
-import { makeStyles, Typography } from '@material-ui/core';
-import { Box } from '@mui/system';
+import { Box, makeStyles, Typography } from '@material-ui/core';
 import categoryApi from 'api/categoryApi';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
