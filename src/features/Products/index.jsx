@@ -9,7 +9,7 @@ function ProductFeature(props) {
     <Box pt={2}>
       <Routes>
         <Route index element={<ListProductPage />} />
-        <Route path=":productId" element={<ProductsDetailPage />} />
+        <Route path=":productId/*" element={<ProductsDetailPage />} />
       </Routes>
     </Box>
   );

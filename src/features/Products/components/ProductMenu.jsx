@@ -35,7 +35,7 @@ function ProductMenu(props) {
       <li>
         <Link
           component={NavLink}
-          to=""
+          to="description"
           style={({ isActive }) => (isActive ? classes.active : undefined)}
         >
           Description

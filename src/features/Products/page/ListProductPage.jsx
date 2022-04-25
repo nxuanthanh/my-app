@@ -48,6 +48,7 @@ function ListProductPage(props) {
       isFreeShip: params.isFreeShip === 'true',
     };
   }, [location.search]);
+  console.log(searchParams);
 
   const [pagination, setPagination] = useState({
     page: 1,
@@ -95,6 +96,10 @@ function ListProductPage(props) {
     setSearchParams(filters);
   }
 
+  function setNewFilter(newFilters) {
+    setSearchParams(newFilters);
+  }
+
   const totalPages = Math.ceil(pagination.total / pagination.limit);
 
   return (
@@ -113,7 +118,7 @@ function ListProductPage(props) {
           <Grid item className={classes.right}>
             <Paper elevation={0}>
               <ProductSort currentSort={queryParams._sort} onChange={handleSortChange} />
-              <FilterViewer filters={queryParams} onChange={handleFilterChange} />
+              <FilterViewer filters={queryParams} onChange={setNewFilter} />
 
               {loading ? <ProductSkeletonList length={9} /> : <ProductList data={productList} />}
 

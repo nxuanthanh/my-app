@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Grid } from '@mui/material';
 import { Skeleton } from '@material-ui/lab';
-import { Box } from '@material-ui/core';
+import { Box, Grid } from '@material-ui/core';
 
 ProductSkeletonList.propTypes = {
   length: PropTypes.number,

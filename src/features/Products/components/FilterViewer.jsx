@@ -32,7 +32,7 @@ const FILTER_LIST = [
       const newFilters = { ...filters };
 
       if (newFilters.isFreeShip) {
-        newFilters.isFreeShip = false;
+        delete newFilters.isFreeShip;
       } else {
         newFilters.isFreeShip = true;
       }
@@ -48,7 +48,7 @@ const FILTER_LIST = [
     isRemovable: true,
     onRemove: (filters) => {
       const newFilters = { ...filters };
-      newFilters.isPromotion = false;
+      delete newFilters.isPromotion;
       return newFilters;
     },
     onToggle: () => {},

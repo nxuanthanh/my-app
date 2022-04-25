@@ -1,37 +1,65 @@
-import { Box, Container, Grid, makeStyles, Paper } from '@material-ui/core';
+import { Box, Container, Grid, LinearProgress, makeStyles, Paper } from '@material-ui/core';
+import { addToCart } from 'features/Cart/cartSlice';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { useParams } from 'react-router';
+import { useDispatch } from 'react-redux';
+import { Route, Routes, useParams } from 'react-router';
 import AddToCartForm from '../components/AddToCartForm';
+import ProductAdditional from '../components/ProductAdditional';
+import ProductDescription from '../components/ProductDescription';
 import ProductInfo from '../components/ProductInfo';
+import ProductMenu from '../components/ProductMenu';
+import ProductReviews from '../components/ProductReviews';
 import ProductThumbnail from '../components/ProductThumbnail';
 import useProductPage from '../hooks/useProductDetail.js';
-import ProductMenu from '../components/ProductMenu';
+
 const useStyles = makeStyles((theme) => ({
-  root: {},
+  root: {
+    padding: theme.spacing(3),
+  },
+
   left: {
     width: '400px',
     borderRight: `1px solid ${theme.palette.grey[300]}`,
     padding: theme.spacing(1.5),
   },
+
   right: {
     flex: '1 1 0',
     padding: theme.spacing(1.5),
+  },
+
+  loading: {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    width: '100%',
   },
 }));
 
 function ProductsDetailPage(props) {
   const classes = useStyles();
   const { productId } = useParams();
+  const dispatch = useDispatch();
 
   const { product, loading } = useProductPage(productId);
 
-  const handleAddToCartSubmit = (formValues) => {
-    console.log('submit formValues', formValues);
+  const handleAddToCartSubmit = ({ quantity }) => {
+    const action = addToCart({
+      id: product.id,
+      product,
+      quantity: Number.parseInt(quantity),
+    });
+
+    dispatch(action);
   };
 
   if (loading) {
-    return <>loading</>;
+    return (
+      <Box className={classes.loading}>
+        <LinearProgress />
+      </Box>
+    );
   }
 
   return (
@@ -51,6 +79,11 @@ function ProductsDetailPage(props) {
         </Paper>
 
         <ProductMenu />
+        <Routes>
+          <Route path="description" element={<ProductDescription product={product} />} />
+          <Route path="additional" element={<ProductAdditional />} />
+          <Route path="reviews" element={<ProductReviews />} />
+        </Routes>
       </Container>
     </Box>
   );
