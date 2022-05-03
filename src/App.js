@@ -1,9 +1,7 @@
 import Header from 'components/Header';
 import Notfound from 'components/NotFound';
-import AlbumFeature from 'features/Album';
-import ProductFeature from 'features/Products';
 import CartFeature from 'features/Cart';
-import TodoFeature from 'features/Todo';
+import ProductFeature from 'features/Products';
 import { useEffect } from 'react';
 import { Outlet, Route, Routes, useLocation, useNavigate } from 'react-router';
 
@@ -21,7 +19,7 @@ function App() {
 
   useEffect(() => {
     if (location.pathname === '/') {
-      navigate('/todos');
+      navigate('/products');
     }
   }, [navigate, location.pathname]);
 
@@ -30,8 +28,6 @@ function App() {
       <Header />
       <Outlet />
       <Routes>
-        <Route path="todos/*" element={<TodoFeature />} />
-        <Route path="albums/*" element={<AlbumFeature />} />
         <Route path="products/*" element={<ProductFeature />} />
         <Route path="cart/*" element={<CartFeature />} />
 

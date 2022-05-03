@@ -6,7 +6,7 @@ import {
   Grid,
   LinearProgress,
   makeStyles,
-  Typography,
+  Typography
 } from '@material-ui/core';
 import LockOpenOutlinedIcon from '@material-ui/icons/LockOpenOutlined';
 import InputField from 'components/form-controls/InputField';

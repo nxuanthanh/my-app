@@ -1,4 +1,5 @@
-import React from "react";
+import React from 'react';
+import './not-found.scss';
 
 function Notfound() {
   return <div>NOT FOUND</div>;

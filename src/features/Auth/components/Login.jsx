@@ -1,10 +1,9 @@
 import { unwrapResult } from '@reduxjs/toolkit';
 import { login } from 'features/Auth/userSlice';
 import { useSnackbar } from 'notistack';
-
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import LoginForm from '../LoginFom';
+import LoginForm from './LoginForm';
 
 function Login(props) {
   const dispatch = useDispatch();

@@ -3,7 +3,7 @@ import { register } from 'features/Auth/userSlice';
 import { useSnackbar } from 'notistack';
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import RegisterForm from '../RegisterForm';
+import RegisterForm from './RegisterForm';
 
 function Register(props) {
   const dispatch = useDispatch();

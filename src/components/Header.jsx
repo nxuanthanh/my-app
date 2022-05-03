@@ -17,10 +17,10 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Login from 'features/Auth/components/Login';
 import Register from 'features/Auth/components/Register';
 import { logout } from 'features/Auth/userSlice';
+import { cartItemCountSelector } from 'features/Cart/cartSelector';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
-import { cartItemCountSelector } from 'features/Cart/cartSelector';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -52,7 +52,7 @@ const MODE = {
   REGISTER: 'register',
 };
 
-export default function Header() {
+function Header() {
   const classes = useStyles();
 
   const [open, setOpen] = useState(false);
@@ -99,23 +99,19 @@ export default function Header() {
               T SHOP
             </Link>
           </Typography>
-          <NavLink className={classes.link} to="todos">
-            <Button color="inherit">TODOS</Button>
-          </NavLink>
           <NavLink className={classes.link} to="products">
             <Button color="inherit">PRODUCTS</Button>
           </NavLink>
-          <NavLink className={classes.link} to="albums">
-            <Button color="inherit">ALBUMS</Button>
+          <NavLink className={classes.link} to="cart">
+            <IconButton aria-label="show 17 new notifications" color="inherit">
+              <Badge badgeContent={cartItemCount} color="secondary">
+                <ShoppingCart />
+              </Badge>
+            </IconButton>
           </NavLink>
-          <IconButton aria-label="show 17 new notifications" color="inherit">
-            <Badge badgeContent={cartItemCount} color="secondary">
-              <ShoppingCart />
-            </Badge>
-          </IconButton>
           {!isLoggedIn ? (
             <Button color="inherit" onClick={handleClickOpen}>
-              LOGin
+              LOGIN
             </Button>
           ) : (
             <IconButton color="inherit" onClick={handleClickMenu}>
@@ -175,3 +171,5 @@ export default function Header() {
     </div>
   );
 }
+
+export default Header;
