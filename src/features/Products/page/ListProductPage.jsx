@@ -36,6 +36,8 @@ function ListProductPage(props) {
   const [loading, setLoading] = useState(true);
   const location = useLocation();
 
+  console.log(searchParams);
+
   const queryParams = useMemo(() => {
     const params = queryString.parse(location.search);
 
