@@ -1,10 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Button } from '@material-ui/core';
-import * as yup from 'yup';
-import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { Button } from '@material-ui/core';
 import QuantityField from 'components/form-controls/QuantityField';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import * as yup from 'yup';
 
 function AddToCartForm({ onSubmit = null }) {
   const schema = yup.object().shape({

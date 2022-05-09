@@ -4,6 +4,7 @@ import CartFeature from 'features/Cart';
 import ProductFeature from 'features/Products';
 import { useEffect } from 'react';
 import { Outlet, Route, Routes, useLocation, useNavigate } from 'react-router';
+import './App.scss';
 
 function App() {
   const location = useLocation();

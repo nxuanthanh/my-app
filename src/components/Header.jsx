@@ -13,22 +13,20 @@ import {
   Typography,
 } from '@material-ui/core';
 import { AccountCircle, Close, ShoppingCart } from '@material-ui/icons';
-import MenuIcon from '@material-ui/icons/Menu';
+import SearchIcon from '@material-ui/icons/Search';
+import logo from 'assets/images/logo.png';
 import Login from 'features/Auth/components/Login';
 import Register from 'features/Auth/components/Register';
 import { logout } from 'features/Auth/userSlice';
-import { cartItemCountSelector } from 'features/Cart/cartSelector';
+import { cartCountSelector } from 'features/Cart/cartSelector';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
-
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
+
   title: {
     flexGrow: 1,
   },
@@ -63,7 +61,7 @@ function Header() {
   const loggedInUser = useSelector((state) => state.user.current);
   const isLoggedIn = !!loggedInUser.id;
 
-  const cartItemCount = useSelector(cartItemCountSelector);
+  const cartItemCount = useSelector(cartCountSelector);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -91,14 +89,14 @@ function Header() {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <MenuIcon />
-          </IconButton>
           <Typography variant="h6" className={classes.title}>
             <Link className={classes.link} to="/">
-              T SHOP
+              <img src={logo} alt="logo" width="50px" />
             </Link>
           </Typography>
+          <IconButton aria-label="search" color="inherit">
+            <SearchIcon />
+          </IconButton>
           <NavLink className={classes.link} to="products">
             <Button color="inherit">PRODUCTS</Button>
           </NavLink>

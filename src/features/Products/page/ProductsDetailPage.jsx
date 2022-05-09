@@ -80,7 +80,7 @@ function ProductsDetailPage(props) {
 
         <ProductMenu />
         <Routes>
-          <Route path="description" element={<ProductDescription product={product} />} />
+          <Route index element={<ProductDescription product={product} />} />
           <Route path="additional" element={<ProductAdditional />} />
           <Route path="reviews" element={<ProductReviews />} />
         </Routes>
